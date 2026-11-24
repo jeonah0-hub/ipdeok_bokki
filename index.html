@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>떡볶이 브랜드 메인</title>
+    <!-- Noto Sans KR 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- 헤더 -->
+        <header class="header">
+            <h1 class="logo"><a href="#">LOGO</a></h1>
+            <button type="button" class="menu-btn" id="openMenuBtn" aria-label="전체 메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+
+        <!-- 슬라이드 사이드 메뉴 영역 -->
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+        <aside class="side-drawer" id="sideDrawer" aria-hidden="true">
+            <div class="drawer-header">
+                <span class="drawer-logo">LOGO</span>
+                <button type="button" class="close-btn" id="closeMenuBtn" aria-label="메뉴 닫기">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <nav class="drawer-nav">
+                <ul>
+                    <!-- 나중에 href="#" 부분의 #을 원하는 파일명(예: list.html)으로 변경하세요 -->
+                    <li><a href="#">리스트 페이지</a></li>
+                    <li><a href="#">상세페이지</a></li>
+                    <li><a href="#">결제페이지</a></li>
+                    <li><a href="#">결제</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Hero 섹션 -->
+        <section class="hero" style="background-image: url('./images/hero-bg.jpg');">
+            <!-- 이미지 연결 전 회색 배경으로 공간 표시 -->
+        </section>
+
+        <!-- Section 1: 주문 버튼 영역 -->
+        <section class="section_1">
+            <button type="button" class="order-btn btn-full">배달 주문하기</button>
+            <div class="btn-half-wrap">
+                <button type="button" class="order-btn btn-half">전화 주문</button>
+                <button type="button" class="order-btn btn-half">쿠폰 사용</button>
+            </div>
+        </section>
+
+        <!-- Section 2: 추천 메뉴 -->
+        <section class="section_2">
+            <h2 class="section-title">추천 메뉴</h2>
+            <div class="tag-group">
+                <button type="button" class="tag-btn active">#해시태그</button>
+                <button type="button" class="tag-btn">#해시태그</button>
+                <button type="button" class="tag-btn">#해시태그</button>
+            </div>
+
+            <div class="recommend-slider">
+                <!-- 왼쪽 슬라이드 미리보기 -->
+                <div class="recommend-card side-card"></div>
+
+                <!-- 중앙 메인 카드 -->
+                <div class="recommend-card active-card">
+                    <span class="best-badge">BEST 1</span>
+                    <h3 class="card-menu-title">떡볶이 타이틀 작성</h3>
+                    <a href="#" class="order-link-btn">주문하기</a>
+                    <div class="card-img-box">
+                        <!-- 이미지 영역 (#313131) -->
+                    </div>
+                </div>
+
+                <!-- 오른쪽 슬라이드 미리보기 -->
+                <div class="recommend-card side-card"></div>
+            </div>
+        </section>
+
+        <!-- Section 3: 메뉴 -->
+        <section class="section_3">
+            <h2 class="section-title">메뉴</h2>
+            <div class="tag-group">
+                <button type="button" class="tag-btn active">탭메뉴 1</button>
+                <button type="button" class="tag-btn">탭메뉴 2</button>
+                <button type="button" class="tag-btn">탭메뉴 3</button>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-thumb"></div>
+                    <p class="menu-name">떡볶이 타이틀 작성</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-thumb"></div>
+                    <p class="menu-name">떡볶이 타이틀 작성</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-thumb"></div>
+                    <p class="menu-name">떡볶이 타이틀 작성</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-thumb"></div>
+                    <p class="menu-name">떡볶이 타이틀 작성</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: 이벤트 -->
+        <section class="section_4">
+            <h2 class="section-title">이벤트</h2>
+            <p class="section-desc">매달 추가되는 엽기떡볶이의 이벤트를 만나보세요!</p>
+
+            <div class="event-tabs">
+                <button type="button" class="event-tab active">진행중</button>
+                <button type="button" class="event-tab">종료</button>
+                <button type="button" class="event-tab">당첨자</button>
+            </div>
+
+            <div class="event-card">
+                <div class="event-thumb"></div>
+                <div class="event-info">
+                    <span class="event-sub">[할인중 이벤트]</span>
+                    <h3 class="event-title">매달 추가되는 엽기떡볶이의 이벤트 내역입니다.<br>자세한 내용은 이벤..</h3>
+                    <p class="event-date">2026.11.23 - 2026.12.31</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 햄버거 메뉴 슬라이드 제어 스크립트 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const openMenuBtn = document.getElementById('openMenuBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const sideDrawer = document.getElementById('sideDrawer');
+            const drawerOverlay = document.getElementById('drawerOverlay');
+
+            function openMenu() {
+                sideDrawer.classList.add('active');
+                drawerOverlay.classList.add('active');
+                sideDrawer.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                sideDrawer.classList.remove('active');
+                drawerOverlay.classList.remove('active');
+                sideDrawer.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            openMenuBtn.addEventListener('click', openMenu);
+            closeMenuBtn.addEventListener('click', closeMenu);
+            drawerOverlay.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+</html>

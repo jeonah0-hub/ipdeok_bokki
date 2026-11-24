@@ -1,0 +1,446 @@
+@charset "utf-8";
+
+/* 기본 초기화 및 폰트 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f5f5f5;
+    color: #000000;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, li {
+    list-style: none;
+}
+
+button {
+    font-family: 'Noto Sans KR', sans-serif;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* 모바일 기준 레이아웃 컨테이너 (최대 480px 중앙 정렬, 모바일에서는 100%) */
+.mobile-container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 공통 섹션 타이틀 */
+.section-title {
+    font-size: 30px;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 헤더 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 20px;
+    background-color: #ffffff;
+}
+
+.header .logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.header .menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+}
+
+.header .menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #333333;
+}
+
+/* 슬라이드 사이드 메뉴 (화면의 2/3 너비) */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 998;
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.side-drawer {
+    position: fixed;
+    top: 0;
+    right: max(0px, calc(50vw - 240px));
+    width: calc(min(100vw, 480px) * 0.6667); /* 화면의 2/3 채움 */
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 999;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.12);
+}
+
+.side-drawer.active {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.drawer-logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.close-btn {
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.close-btn span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #333333;
+}
+
+.close-btn span:first-child {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.close-btn span:last-child {
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.drawer-nav {
+    padding: 16px 20px;
+}
+
+.drawer-nav ul li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.drawer-nav ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 4px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+    transition: color 0.2s;
+}
+
+.drawer-nav ul li a::after {
+    content: "›";
+    font-size: 20px;
+    color: #838383;
+}
+
+.drawer-nav ul li a:hover {
+    color: #666666;
+}
+
+/* Hero 섹션 */
+.hero {
+    width: 100%;
+    height: 500px;
+    background-color: #cccccc; /* 이미지 들어가기 전 회색 처리 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Section 1: 주문 버튼 영역 */
+.section_1 {
+    padding: 24px 20px 36px;
+}
+
+.order-btn {
+    height: 80px;
+    background-color: #7d7d7d;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.order-btn:hover {
+    background-color: #666666;
+}
+
+.btn-full {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.btn-half-wrap {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-half {
+    width: calc(50% - 8px);
+}
+
+/* 해시태그 및 탭 버튼 공통 (Section 2, Section 3) */
+.tag-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.tag-btn {
+    height: 35px;
+    padding: 0 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555555;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag-btn.active {
+    background-color: #7d7d7d;
+    border-color: #7d7d7d;
+    color: #ffffff;
+}
+
+/* Section 2: 추천 메뉴 */
+.section_2 {
+    background-color: #b5b5b5;
+    padding: 50px 0 80px;
+}
+
+.recommend-slider {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+}
+
+.recommend-card {
+    background-color: #7d7d7d;
+    border-radius: 16px;
+    flex-shrink: 0;
+}
+
+.recommend-card.side-card {
+    width: 120px;
+    height: 290px;
+    margin-top: 10px;
+}
+
+.recommend-card.active-card {
+    width: 260px;
+    height: 310px;
+    padding: 28px 20px 0;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.best-badge {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.card-menu-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+
+.order-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.card-img-box {
+    position: absolute;
+    bottom: -35px; /* 시안처럼 카드 아래쪽 경계를 뚫고 내려오게 배치 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 170px;
+    height: 170px;
+    background-color: #313131;
+}
+
+/* Section 3: 메뉴 */
+.section_3 {
+    padding: 60px 20px 40px;
+    background-color: #ffffff;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+}
+
+.menu-item .menu-thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1.05;
+    background-color: #7d7d7d;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.menu-item .menu-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+/* Section 4: 이벤트 */
+.section_4 {
+    padding: 50px 20px 70px;
+    background-color: #ffffff;
+}
+
+.section_4 .section-title {
+    margin-bottom: 8px;
+}
+
+.section-desc {
+    font-size: 14px;
+    font-weight: 500;
+    color: #838383;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.event-tabs {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.event-tab {
+    flex: 1;
+    height: 44px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #838383;
+    text-align: center;
+}
+
+.event-tab.active {
+    font-weight: 700;
+    color: #000000;
+}
+
+.event-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.event-thumb {
+    width: 100%;
+    height: 210px;
+    background-color: #7d7d7d;
+}
+
+.event-info {
+    padding: 18px 16px 20px;
+}
+
+.event-sub {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555555;
+    margin-bottom: 6px;
+}
+
+.event-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 1.45;
+    margin-bottom: 14px;
+    word-break: keep-all;
+}
+
+.event-date {
+    font-size: 14px;
+    font-weight: 300;
+    color: #555555;
+}
