@@ -1,0 +1,316 @@
+
+@charset "utf-8";
+
+/* ========================================
+   기본 초기화 및 폰트 설정
+======================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f5f5f5;
+    color: #111111;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   모바일 레이아웃 컨테이너
+======================================== */
+
+.mobile-container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+
+/* ========================================
+   헤더
+======================================== */
+
+.header {
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+}
+
+/* 장바구니 및 홈 아이콘 간격 */
+
+.header-right {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.header a,
+.header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 28px;
+}
+
+.header svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* ========================================
+   공통 콘텐츠 패널
+======================================== */
+
+.panel {
+    background: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    padding: 24px 20px;
+}
+
+
+/* ========================================
+   메뉴 상세 정보
+======================================== */
+
+.product {
+    padding-top: 20px;
+    border-radius: 0 0 12px 12px;
+}
+
+/* 대표 메뉴 이미지 */
+
+.hero {
+    width: 100%;
+    aspect-ratio: 1.08;
+    max-height: 400px;
+    border-radius: 12px;
+    background: #d9d9d9;
+    color: #666666;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+}
+
+/* 메뉴명 */
+
+.product h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 28px;
+}
+
+/* 메뉴 가격 */
+
+.price {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 14px 0 20px;
+}
+
+/* 메뉴 설명 */
+
+.description {
+    border-top: 1px solid #eeeeee;
+    padding-top: 18px;
+    font-size: 14px;
+    color: #777777;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   제품 영양 정보 및 원산지
+======================================== */
+
+.info {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.info summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.info summary::-webkit-details-marker {
+    display: none;
+}
+
+.info svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.info svg:last-child {
+    margin-left: auto;
+}
+
+.info p {
+    padding-top: 12px;
+    color: #777777;
+}
+
+
+/* ========================================
+   맵기 및 토핑 선택
+======================================== */
+
+h2 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.option h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+/* 필수 선택 배지 */
+
+.badge {
+    font-size: 11px;
+    font-weight: 500;
+    color: #ffffff;
+    background: #542619;
+    border-radius: 20px;
+    padding: 3px 9px;
+}
+
+/* 옵션 선택 항목 */
+
+.option label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 54px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* 토핑 추가 금액 */
+
+.option label span {
+    margin-left: auto;
+    color: #555555;
+}
+
+/* 라디오 버튼 및 체크박스 */
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: #D93829;
+    flex-shrink: 0;
+}
+
+
+/* ========================================
+   수량 선택
+======================================== */
+
+.line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+}
+
+.qty button {
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+}
+
+.qty output {
+    min-width: 32px;
+    text-align: center;
+}
+
+
+/* ========================================
+   총 주문 금액
+======================================== */
+
+.total {
+    border-top: 1px solid #eeeeee;
+    margin-top: 24px;
+    padding-top: 20px;
+}
+
+.total strong:last-child {
+    font-size: 22px;
+}
+
+
+/* ========================================
+   하단 주문 버튼
+======================================== */
+
+.bottom {
+    position: sticky;
+    bottom: 0;
+    background: #ffffff;
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+    border-top: 1px solid #eeeeee;
+}
+
+.primary {
+    width: 100%;
+    height: 56px;
+    background: #D93829;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.hero {
+    overflow: hidden;
+}
+
+.hero img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}

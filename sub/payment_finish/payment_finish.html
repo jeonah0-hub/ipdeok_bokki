@@ -1,12 +1,411 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>결제 완료 페이지</title>
-    <link rel="stylesheet" href="css/payment_finish.css">
+    <title>입덕볶이 | 주문 완료</title>
+
+    <!-- Noto Sans KR 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide 아이콘 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/payment_finish.css">
 </head>
+
 <body>
-    <h1>결제 완료 페이지</h1>
+
+    <div class="mobile-container">
+
+        <!-- 헤더 -->
+        <header class="header">
+
+            <div class="header-space"></div>
+
+            <h1>주문 완료</h1>
+
+            <a href="../../index.html" aria-label="홈">
+                <i data-lucide="house"></i>
+            </a>
+
+        </header>
+
+        <main>
+
+            <!-- Section 1 : 주문 완료 및 캐릭터 -->
+            <section class="success-section">
+
+                <div class="character-area">
+
+                    <img
+                        src="./img/character.png"
+                        alt="떡볶이를 들고 있는 입덕볶이 캐릭터"
+                        class="character-img"
+                        onerror="this.hidden=true; document.getElementById('characterPlaceholder').hidden=false;"
+                    >
+
+                    <!-- 이미지 연결 전 임시 영역 -->
+                    <div class="character-placeholder"
+                         id="characterPlaceholder"
+                         hidden>
+
+                        <i data-lucide="image"></i>
+
+                        <span>입덕볶이 캐릭터</span>
+
+                    </div>
+
+                </div>
+
+                <h2>입덕 준비 완료!</h2>
+
+                <p class="success-title">
+                    주문이 완료되었어요.
+                </p>
+
+                <p class="success-desc">
+                    맛있는 떡볶이를 정성껏 준비하고 있어요.<br>
+                    조금만 기다려 주세요!
+                </p>
+
+            </section>
+
+            <!-- Section 2 : 주문 정보 -->
+            <section class="order-section">
+
+                <!-- 예상 배달 시간 -->
+                <div class="delivery-time">
+
+                    <div class="delivery-title">
+
+                        <i data-lucide="bike"></i>
+
+                        <span>예상 배달 시간</span>
+
+                    </div>
+
+                    <strong>30~40분</strong>
+
+                </div>
+
+                <!-- 주문 진행 상태 -->
+                <div class="order-status">
+
+                    <div class="status-item active">
+
+                        <div class="status-icon">
+                            <i data-lucide="check"></i>
+                        </div>
+
+                        <span>주문 완료</span>
+
+                    </div>
+
+                    <div class="status-line"></div>
+
+                    <div class="status-item">
+
+                        <div class="status-icon">
+                            <i data-lucide="cooking-pot"></i>
+                        </div>
+
+                        <span>조리 중</span>
+
+                    </div>
+
+                    <div class="status-line"></div>
+
+                    <div class="status-item">
+
+                        <div class="status-icon">
+                            <i data-lucide="bike"></i>
+                        </div>
+
+                        <span>배달 중</span>
+
+                    </div>
+
+                    <div class="status-line"></div>
+
+                    <div class="status-item">
+
+                        <div class="status-icon">
+                            <i data-lucide="package-check"></i>
+                        </div>
+
+                        <span>배달 완료</span>
+
+                    </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- 주문 내역 -->
+                <div class="order-history">
+
+                    <h2 class="section-title">주문 내역</h2>
+
+                    <div class="order-item">
+
+                        <!-- 메뉴 이미지 영역 -->
+                        <div class="order-img">
+
+                            <i data-lucide="image"></i>
+
+                        </div>
+
+                        <div class="order-info">
+
+                            <h3 id="menuName">
+                                오리지널 떡볶이
+                            </h3>
+
+                            <p class="menu-option" id="menuOption">
+                                보통맛 · 중국당면 추가
+                            </p>
+
+                            <p class="menu-qty" id="menuQty">
+                                수량 1개
+                            </p>
+
+                        </div>
+
+                        <strong class="menu-price" id="menuPrice">
+                            15,000원
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- 상세 결제 정보 -->
+                <div class="payment-info">
+
+                    <div class="info-row">
+
+                        <span>주문번호</span>
+
+                        <strong id="orderNumber">
+                            20261125-0001
+                        </strong>
+
+                    </div>
+
+                    <div class="info-row">
+
+                        <span>결제 수단</span>
+
+                        <strong id="paymentMethod">
+                            신용/체크카드
+                        </strong>
+
+                    </div>
+
+                    <div class="info-row">
+
+                        <span>주문 금액</span>
+
+                        <strong id="orderAmount">
+                            15,000원
+                        </strong>
+
+                    </div>
+
+                    <div class="info-row">
+
+                        <span>배달비</span>
+
+                        <strong id="deliveryFee">
+                            3,000원
+                        </strong>
+
+                    </div>
+
+                    <div class="info-row">
+
+                        <span>쿠폰 할인</span>
+
+                        <strong id="discount">
+                            -1,000원
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- 최종 결제 금액 -->
+                <div class="final-price">
+
+                    <strong>최종 결제 금액</strong>
+
+                    <strong id="finalPrice">
+                        17,000원
+                    </strong>
+
+                </div>
+
+                <!-- 하단 버튼 -->
+                <div class="button-group">
+
+                    <a href="../../index.html"
+                       class="btn btn-primary">
+
+                        홈으로 돌아가기
+
+                    </a>
+
+                    <a href="../lists/lists.html"
+                       class="btn btn-secondary">
+
+                        메뉴 더 구경하기
+
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+
+        // Lucide 아이콘 생성
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        // 결제페이지에서 주문 정보 가져오기
+        let order;
+
+        try {
+
+            order = JSON.parse(
+                sessionStorage.getItem('ipdeokOrder')
+            );
+
+        } catch {
+
+            order = null;
+
+        }
+
+        // 직접 접속 시 사용할 시연용 주문 정보
+        order = order || {
+
+            name: '오리지널 떡볶이',
+            qty: 1,
+            options: '보통맛, 중국당면 추가',
+            total: 15000,
+            orderAmount: 15000,
+            deliveryFee: 3000,
+            discount: 1000,
+            payment: '신용/체크카드',
+            finalPrice: 17000
+
+        };
+
+        // 금액 표시 형식
+        const fmt = n =>
+            Number(n).toLocaleString('ko-KR') + '원';
+
+        const orderAmount =
+            Number(order.orderAmount ?? order.total ?? 0);
+
+        const deliveryFee =
+            Number(order.deliveryFee ?? 3000);
+
+        const discount =
+            Number(order.discount ?? 0);
+
+        const finalPrice =
+            Number(
+                order.finalPrice ??
+                (orderAmount + deliveryFee - discount)
+            );
+
+        // 시연용 주문번호 생성
+        function createOrderNumber() {
+
+            const now = new Date();
+
+            const year = now.getFullYear();
+
+            const month = String(
+                now.getMonth() + 1
+            ).padStart(2, '0');
+
+            const day = String(
+                now.getDate()
+            ).padStart(2, '0');
+
+            const random = String(
+                Math.floor(Math.random() * 9000) + 1000
+            );
+
+            return `${year}${month}${day}-${random}`;
+
+        }
+
+        // 새로고침 시 기존 주문번호 유지
+        if (!order.orderNumber) {
+
+            order.orderNumber = createOrderNumber();
+
+            sessionStorage.setItem(
+                'ipdeokOrder',
+                JSON.stringify(order)
+            );
+
+        }
+
+        // 주문 내역 표시
+        document.querySelector('#menuName').textContent =
+            order.name;
+
+        document.querySelector('#menuOption').textContent =
+            order.options
+                ? order.options.replace(/,\s*/g, ' · ')
+                : '추가 옵션 없음';
+
+        document.querySelector('#menuQty').textContent =
+            '수량 ' + order.qty + '개';
+
+        document.querySelector('#menuPrice').textContent =
+            fmt(orderAmount);
+
+        // 결제 정보 표시
+        document.querySelector('#orderNumber').textContent =
+            order.orderNumber;
+
+        document.querySelector('#paymentMethod').textContent =
+            order.payment || '신용/체크카드';
+
+        document.querySelector('#orderAmount').textContent =
+            fmt(orderAmount);
+
+        document.querySelector('#deliveryFee').textContent =
+            fmt(deliveryFee);
+
+        document.querySelector('#discount').textContent =
+            discount > 0 ? '-' + fmt(discount) : '0원';
+
+        document.querySelector('#finalPrice').textContent =
+            fmt(finalPrice);
+
+    </script>
+
 </body>
 </html>

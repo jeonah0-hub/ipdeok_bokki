@@ -379,6 +379,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #D93829;
 }
 
 .best-badge {
@@ -410,12 +411,12 @@ button {
 /* 추천 메뉴 이미지 영역 */
 
 .card-img-box {
-     position: absolute;
-    bottom: -35px;
+    position: absolute;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 170px;
-    height: 170px;
+    width: 90%;
+    height: 185px;
     background-color: transparent;
     background-image: url('../img/best_1.png');
     background-size: contain;
@@ -547,7 +548,7 @@ button {
    작은 모바일 화면 대응
 ======================================== */
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 500px) {
 
     .tag-group {
         gap: 8px;
@@ -560,7 +561,21 @@ button {
     .recommend-card.active-card {
         padding-left: 10px;
         padding-right: 10px;
-        background-color: #D93829;
+    }
+
+    .recommend-card.active-card {
+          width: 66.6667%;
+    max-width: 330px;
+    height: 310px;
+    margin-top: 32px;
+    padding: 28px 20px 0;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D93829
     }
 
 }

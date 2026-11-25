@@ -1,12 +1,649 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>리스트 페이지</title>
-    <link rel="stylesheet" href="css/lists.css">
+
+    <title>입덕볶이 | 메뉴</title>
+
+    <!-- Noto Sans KR 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide 아이콘 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/lists.css">
 </head>
+
 <body>
-    <h1>리스트 페이지</h1>
+
+    <div class="mobile-container">
+
+        <!-- 헤더 -->
+        <header class="header">
+
+            <a href="../../index.html" aria-label="뒤로가기">
+                <i data-lucide="chevron-left"></i>
+            </a>
+
+            <h1>배달 주문</h1>
+
+            <div class="header-right">
+
+                <a href="../payment/payment.html" aria-label="장바구니">
+                    <i data-lucide="shopping-cart"></i>
+                </a>
+
+                <a href="../../index.html" aria-label="홈">
+                    <i data-lucide="house"></i>
+                </a>
+
+            </div>
+
+        </header>
+
+        <!-- 매장 정보 -->
+        <section class="store-info">
+
+            <div class="store-icon">
+                <i data-lucide="store"></i>
+            </div>
+
+            <div class="store-text">
+
+                <strong>입덕볶이</strong>
+
+                <span>· 배달 주문 이용</span>
+
+            </div>
+
+            <button type="button" class="store-change" id="storeChange">
+                변경
+            </button>
+
+        </section>
+
+        <main>
+
+            <!-- Section 1 : 추천 메뉴 -->
+            <section class="recommend-section">
+
+                <h2 class="section-title">
+                    입덕볶이 추천 메뉴
+                </h2>
+
+                <p class="section-desc">
+                    입덕볶이에서 가장 인기 있는 메뉴를 만나보세요!
+                </p>
+
+                <!-- 추천 메뉴 카드 -->
+                <div class="recommend-grid" id="recommendGrid">
+                </div>
+
+                <!-- 더보기 버튼 -->
+                <button type="button" class="more-btn" id="moreBtn"
+                        aria-expanded="false">
+
+                    <span>더보기</span>
+
+                    <i data-lucide="chevron-down"></i>
+
+                </button>
+
+            </section>
+
+            <!-- 섹션 구분 -->
+            <div class="section-divider"></div>
+
+            <!-- Section 2 : 전체 메뉴 -->
+            <section class="all-menu-section">
+
+                <h2 class="section-title">
+                    전체 메뉴
+                </h2>
+
+                <!-- 메뉴 카테고리 -->
+                <nav class="category-tabs" aria-label="메뉴 카테고리">
+
+                    <button type="button"
+                            class="category-btn"
+                            data-category="recommend">
+                        추천 조합
+                    </button>
+
+                    <button type="button"
+                            class="category-btn active"
+                            data-category="tteokbokki">
+                        떡볶이
+                    </button>
+
+                    <button type="button"
+                            class="category-btn"
+                            data-category="rice">
+                        밥
+                    </button>
+
+                    <button type="button"
+                            class="category-btn"
+                            data-category="side">
+                        사이드
+                    </button>
+
+                    <button type="button"
+                            class="category-btn"
+                            data-category="drink">
+                        음료수
+                    </button>
+
+                </nav>
+
+                <!-- 카테고리별 메뉴 리스트 -->
+                <div class="menu-list" id="menuList">
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        /* ========================================
+           전체 메뉴 데이터
+        ======================================== */
+
+        const menus = {
+
+            // 추천 조합
+            recommend: [
+
+                 {
+        name: '오리지널 떡볶이 + 모둠 튀김',
+        price: 17000,
+        image: 'best1.png'
+    },
+
+    {
+        name: '로제 떡볶이 + 주먹밥',
+        price: 18000,
+        image: 'best1.png'
+    },
+
+    {
+        name: '마라 떡볶이 + 참치묵은지김밥',
+        price: 20000,
+        image: 'best1.png'
+    },
+
+    {
+        name: '치즈 떡볶이 + 매운 김치김밥',
+        price: 18500,
+        image: 'best1.png'
+    },
+
+    {
+        name: '차돌박이 떡볶이 + 모둠 튀김 + 쿨피스',
+        price: 23000,
+        image: 'best1.png'
+    }
+
+
+            ],
+
+            // 떡볶이
+            tteokbokki: [
+
+                {
+                    name: '오리지널 떡볶이',
+                    price: 12000,
+                    image: 'ddeok_bokki_1.png'
+                },
+
+                {
+                    name: '로제 떡볶이',
+                    price: 15000,
+                    image: 'ddeok_bokki_2.png'
+                },
+
+                {
+                    name: '치즈 떡볶이',
+                    price: 14000,
+                    image: 'ddeok_bokki_3.png'
+                },
+
+                {
+                    name: '차돌박이 떡볶이',
+                    price: 16000,
+                    image: 'ddeok_bokki_4.png'
+                },
+
+                {
+                    name: '마라 떡볶이',
+                    price: 15000,
+                    image: 'ddeok_bokki_5.png'
+                }
+
+            ],
+
+            // 밥
+            rice: [
+
+                {
+                    name: '참치마요 주먹밥',
+                    price: 4000,
+                    image: 'bob1.png'
+                },
+
+                {
+                    name: '김가루 주먹밥',
+                    price: 3000,
+                    image: 'bob1.png'
+                },
+
+                {
+                    name: '매운 김치김밥',
+                    price: 4500,
+                    image: 'bob2.png'
+                },
+
+                {
+                    name: '기본 김밥',
+                    price: 3500,
+                    image: 'bob2.png'
+                },
+
+                {
+                    name: '참치묵은지김밥',
+                    price: 5000,
+                    image: 'bob2.png'
+                }
+
+            ],
+
+            // 사이드
+            side: [
+
+                {
+                    name: '모둠 튀김',
+                    price: 5000,
+                    description: '오뎅 + 야채 + 고구마 + 오징어 + 고추튀김',
+                    image: 'side1.png'
+                },
+
+                {
+                    name: '김말이 튀김',
+                    price: 1000,
+                    image: 'side1.png'
+                },
+
+                {
+                    name: '순대',
+                    price: 4000,
+                    image: 'side1.png'
+                },
+
+                {
+                    name: '오뎅 튀김',
+                    price: 1000,
+                    image: 'side1.png'
+                },
+
+                {
+                    name: '야채 튀김',
+                    price: 1000,
+                    image: 'side1.png'
+                },
+
+                {
+                    name: '고구마 튀김',
+                    price: 1000,
+                    image: 'side1.png'
+                },
+
+                {
+                    name: '오징어 튀김',
+                    price: 1500,
+                    image: 'side1.png'
+                },
+
+                {
+                    name: '고추 튀김',
+                    price: 1500,
+                    image: 'side1.png'
+                }
+
+            ],
+
+            // 음료수
+            drink: [
+
+                {
+                    name: '쿨피스',
+                    price: 2000,
+                    image: 'side2.png'
+                },
+
+                {
+                    name: '콜라',
+                    price: 2000,
+                    image: 'side2.png'
+                },
+
+                {
+                    name: '사이다',
+                    price: 2000,
+                    image: 'side2.png'
+                }
+
+            ]
+
+        };
+
+
+        /* ========================================
+           상단 추천 메뉴 데이터
+        ======================================== */
+
+        const recommendedMenus = [
+
+            {
+                name: '오리지널 떡볶이',
+                originalPrice: 12000,
+                price: 10800,
+                discount: 10,
+                category: 'tteokbokki',
+                image: 'ddeok_bokki_1.png'
+            },
+
+            {
+                name: '로제 떡볶이',
+                originalPrice: 15000,
+                price: 13500,
+                discount: 10,
+                category: 'tteokbokki',
+                image: 'ddeok_bokki_2.png'
+            },
+
+            {
+                name: '오리지널 떡볶이 + 모둠 튀김',
+                originalPrice: 17000,
+                price: 15300,
+                discount: 10,
+                category: 'recommend',
+                image: 'best1.png'
+            },
+
+            {
+                name: '떡볶이 + 주먹밥',
+                originalPrice: 15000,
+                price: 13500,
+                discount: 10,
+                category: 'recommend',
+                image: 'best1.png'
+            },
+
+            {
+                name: '치즈 떡볶이',
+                originalPrice: 14000,
+                price: 12600,
+                discount: 10,
+                category: 'tteokbokki',
+                image: 'ddeok_bokki_3.png'
+            },
+
+            {
+                name: '차돌박이 떡볶이',
+                originalPrice: 16000,
+                price: 14400,
+                discount: 10,
+                category: 'tteokbokki',
+                image: 'ddeok_bokki_4.png'
+            }
+
+        ];
+
+
+        /* ========================================
+           공통 기능
+        ======================================== */
+
+        const menuList = document.getElementById('menuList');
+        const recommendGrid = document.getElementById('recommendGrid');
+        const moreBtn = document.getElementById('moreBtn');
+
+        let expanded = false;
+
+        // 가격 표시
+        function formatPrice(price) {
+
+            return price.toLocaleString('ko-KR') + '원';
+
+        }
+
+        // Lucide 아이콘 생성
+        function updateIcons() {
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+        }
+
+        // 상세페이지 이동 경로
+        function detailUrl(item, category) {
+
+            const params = new URLSearchParams({
+
+                name: item.name,
+                price: item.price,
+                category: category,
+                image: item.image
+
+            });
+
+            return '../detail/detail.html?' + params.toString();
+
+        }
+
+
+        /* ========================================
+           이미지 영역 생성
+        ======================================== */
+
+        function createImage(item) {
+    return `
+        <div class="menu-image">
+            <img
+                src="./img/${item.image}"
+                alt="${item.name}"
+            >
+        </div>
+    `;
+
+        }
+
+
+        /* ========================================
+           상단 추천 메뉴 출력
+        ======================================== */
+
+        function renderRecommendedMenus() {
+
+            const visibleMenus = expanded
+                ? recommendedMenus
+                : recommendedMenus.slice(0, 4);
+
+            recommendGrid.innerHTML = visibleMenus.map(item => `
+
+                <a href="${detailUrl(item, item.category)}"
+                   class="recommend-card">
+
+                    ${createImage(item)}
+
+                    <div class="recommend-price">
+
+                        <span class="discount-rate">
+                            ${item.discount}%
+                        </span>
+
+                        <strong>
+                            ${formatPrice(item.price)}
+                        </strong>
+
+                    </div>
+
+                    <p class="original-price">
+                        ${formatPrice(item.originalPrice)}
+                    </p>
+
+                    <h3 class="recommend-name">
+                        ${item.name}
+                    </h3>
+
+                </a>
+
+            `).join('');
+
+            moreBtn.innerHTML = `
+
+                <span>${expanded ? '접기' : '더보기'}</span>
+
+                <i data-lucide="${expanded
+                    ? 'chevron-up'
+                    : 'chevron-down'}"></i>
+
+            `;
+
+            moreBtn.setAttribute('aria-expanded', expanded);
+
+            updateIcons();
+
+        }
+
+
+        /* ========================================
+           전체 메뉴 출력
+        ======================================== */
+
+        function renderMenus(category) {
+
+            menuList.innerHTML = menus[category].map(item => `
+
+                <a href="${detailUrl(item, category)}"
+                   class="menu-item">
+
+                    ${createImage(item)}
+
+                    <div class="menu-info">
+
+                        <h3 class="menu-name">
+                            ${item.name}
+                        </h3>
+
+                        ${item.description ? `
+                            <p class="menu-description">
+                                ${item.description}
+                            </p>
+                        ` : ''}
+
+                        <strong class="menu-price">
+                            ${formatPrice(item.price)}
+                        </strong>
+
+                    </div>
+
+                    <i data-lucide="chevron-right"
+                       class="menu-arrow"></i>
+
+                </a>
+
+            `).join('');
+
+            updateIcons();
+
+        }
+
+
+        /* ========================================
+           카테고리 선택 기능
+        ======================================== */
+
+        const categoryButtons =
+            document.querySelectorAll('.category-btn');
+
+        categoryButtons.forEach(button => {
+
+            button.addEventListener('click', function () {
+
+                categoryButtons.forEach(btn => {
+
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-pressed', 'false');
+
+                });
+
+                this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
+
+                renderMenus(this.dataset.category);
+
+            });
+
+        });
+
+
+        /* ========================================
+           더보기 버튼
+        ======================================== */
+
+        moreBtn.addEventListener('click', function () {
+
+            expanded = !expanded;
+
+            renderRecommendedMenus();
+
+        });
+
+
+        /* ========================================
+           매장 변경 버튼 (프로토타입)
+        ======================================== */
+
+        document.getElementById('storeChange')
+            .addEventListener('click', function () {
+
+                alert('현재 이용 가능한 매장은 입덕볶이입니다.');
+
+            });
+
+
+        /* ========================================
+           초기 화면 설정
+        ======================================== */
+
+        categoryButtons.forEach(btn => {
+
+            btn.setAttribute(
+                'aria-pressed',
+                btn.classList.contains('active')
+            );
+
+        });
+
+        renderRecommendedMenus();
+
+        renderMenus('tteokbokki');
+
+        updateIcons();
+
+    </script>
+
 </body>
 </html>

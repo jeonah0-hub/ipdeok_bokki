@@ -1,0 +1,526 @@
+
+@charset "utf-8";
+
+/* ========================================
+   기본 초기화
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #F5F5F5;
+    color: #111111;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* ========================================
+   모바일 레이아웃
+======================================== */
+
+.mobile-container {
+    width: 100%;
+    max-width: 500px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+
+/* ========================================
+   헤더
+======================================== */
+
+.header {
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+.header h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.header a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 44px;
+}
+
+.header svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+/* ========================================
+   매장 정보
+======================================== */
+
+.store-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.store-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #F1F1F1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.store-icon svg {
+    width: 17px;
+    height: 17px;
+    color: #555555;
+}
+
+.store-text {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    flex: 1;
+    font-size: 13px;
+}
+
+.store-text strong {
+    font-weight: 500;
+}
+
+.store-text span {
+    color: #999999;
+}
+
+.store-change {
+    padding: 5px 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+
+/* ========================================
+   공통 섹션 타이틀
+======================================== */
+
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.section-desc {
+    font-size: 13px;
+    font-weight: 400;
+    color: #888888;
+    margin-top: 8px;
+}
+
+
+/* ========================================
+   Section 1 : 추천 메뉴
+======================================== */
+
+.recommend-section {
+    padding: 30px 20px;
+    background-color: #FFFFFF;
+}
+
+.recommend-section .section-title {
+    color: #542619;
+}
+
+
+/* 추천 메뉴 2열 배치 */
+
+.recommend-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    row-gap: 32px;
+    margin-top: 24px;
+}
+
+
+/* 추천 메뉴 카드 */
+
+.recommend-card {
+    display: block;
+    min-width: 0;
+}
+
+
+/* ========================================
+   공통 메뉴 이미지
+======================================== */
+
+.menu-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #EEEEEE;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.menu-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+/* 이미지가 없을 경우 임시 영역 */
+
+.image-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #BBBBBB;
+}
+
+.image-placeholder svg {
+    width: 30px;
+    height: 30px;
+    stroke-width: 1.5;
+}
+
+
+/* ========================================
+   추천 메뉴 가격 및 이름
+======================================== */
+
+.recommend-price {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.discount-rate {
+    font-size: 18px;
+    font-weight: 700;
+    color: #D93829;
+}
+
+.recommend-price strong {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+}
+
+.original-price {
+    font-size: 13px;
+    font-weight: 400;
+    color: #AAAAAA;
+    text-decoration: line-through;
+    margin-top: 2px;
+}
+
+.recommend-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #555555;
+    line-height: 1.5;
+    margin-top: 5px;
+    overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   더보기 버튼
+======================================== */
+
+.more-btn {
+    width: 100%;
+    height: 46px;
+    margin-top: 30px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #FFFFFF;
+}
+
+.more-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.more-btn:hover {
+    background-color: #F8F8F8;
+}
+
+
+/* ========================================
+   추천 메뉴 / 전체 메뉴 구분선
+======================================== */
+
+.section-divider {
+    width: 100%;
+    height: 10px;
+    background-color: #EEEEEE;
+}
+
+
+/* ========================================
+   Section 2 : 전체 메뉴
+======================================== */
+
+.all-menu-section {
+    padding-top: 28px;
+    padding-bottom: 40px;
+}
+
+.all-menu-section > .section-title {
+    padding: 0 20px;
+    margin-bottom: 14px;
+}
+
+
+/* ========================================
+   메뉴 카테고리
+======================================== */
+
+.category-tabs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #EEEEEE;
+    background-color: #FFFFFF;
+}
+
+.category-btn {
+    flex: 1;
+    min-width: 0;
+    height: 50px;
+    padding: 0 4px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #888888;
+    white-space: nowrap;
+    position: relative;
+}
+
+
+/* 선택된 카테고리 */
+
+.category-btn.active {
+    color: #D93829;
+    font-weight: 700;
+}
+
+.category-btn.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 3px;
+    background-color: #D93829;
+}
+
+
+/* ========================================
+   전체 메뉴 리스트
+======================================== */
+
+.menu-list {
+    padding: 0 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+
+/* 전체 메뉴 이미지 */
+
+.menu-item .menu-image {
+    width: 33.333%;
+    max-width: 150px;
+    flex-shrink: 0;
+}
+
+
+/* 메뉴 정보 */
+
+.menu-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-name {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.menu-description {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #888888;
+    overflow-wrap: anywhere;
+}
+
+.menu-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111111;
+}
+
+.menu-arrow {
+    width: 18px;
+    height: 18px;
+    color: #BBBBBB;
+    flex-shrink: 0;
+}
+
+
+/* ========================================
+   접근성
+======================================== */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #D93829;
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   작은 모바일 화면 대응
+======================================== */
+
+@media screen and (max-width: 380px) {
+
+    .header h1 {
+        font-size: 18px;
+    }
+
+    .header-right {
+        gap: 12px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .section-desc {
+        font-size: 12px;
+    }
+
+    .recommend-grid {
+        column-gap: 12px;
+        row-gap: 26px;
+    }
+
+    .recommend-price strong,
+    .discount-rate {
+        font-size: 16px;
+    }
+
+    .recommend-name {
+        font-size: 14px;
+    }
+
+    .category-btn {
+        font-size: 13px;
+        padding: 0 2px;
+    }
+
+    .menu-item {
+        gap: 12px;
+        padding: 16px 0;
+    }
+
+    .menu-name {
+        font-size: 15px;
+    }
+
+    .menu-price {
+        font-size: 18px;
+    }
+
+    .menu-description {
+        font-size: 11px;
+    }
+
+}

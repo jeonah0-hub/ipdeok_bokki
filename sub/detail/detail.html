@@ -1,12 +1,337 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>메인페이지</title>
-    <link rel="stylesheet" href="css/detail.css">
+    <title>입덕볶이 | 메뉴 상세</title>
+
+    <!-- Noto Sans KR 폰트 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- Lucide 아이콘 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/detail.css">
 </head>
 <body>
-    <h1>메인페이지</h1>
+
+    <div class="mobile-container">
+
+        <!-- 헤더 -->
+        <header class="header">
+
+            <a href="../lists/lists.html" aria-label="뒤로">
+                <i data-lucide="chevron-left"></i>
+            </a>
+
+            <div class="header-right">
+
+                <button id="cart" aria-label="현재 메뉴 주문 확인">
+                    <i data-lucide="shopping-cart"></i>
+                </button>
+
+                <a href="../../index.html" aria-label="홈">
+                    <i data-lucide="house"></i>
+                </a>
+
+            </div>
+
+        </header>
+
+        <main>
+
+            <!-- 메뉴 상세 정보 -->
+            <section class="product panel">
+
+                <div class="hero" role="img" aria-label="대표 메뉴 이미지 자리">
+                     <img id="productImage" src="" alt="메뉴 이미지">
+                </div>
+
+                <h1 id="name">오리지널 떡볶이</h1>
+
+                <p class="price" id="base"></p>
+
+                <p class="description">
+                    메뉴 설명이 들어가는 영역입니다.
+                </p>
+
+                <details class="info">
+                    <summary>
+                        <i data-lucide="info"></i>
+                        제품 영양 정보 | 원산지 정보
+                        <i data-lucide="chevron-right"></i>
+                    </summary>
+
+                    <p>
+                        영양 및 원산지 정보는 추후 등록 예정입니다.
+                    </p>
+                </details>
+
+            </section>
+
+            <div id="options">
+
+                <!-- 맵기 선택 -->
+                <section class="panel option">
+
+                    <h2>
+                        맵기 선택 (1)
+                        <span class="badge">필수 선택</span>
+                    </h2>
+
+                    <label>
+                        <input type="radio" name="spicy" value="순한맛">
+                        순한맛
+                    </label>
+
+                    <label>
+                        <input type="radio" name="spicy" value="보통맛" checked>
+                        보통맛
+                    </label>
+
+                    <label>
+                        <input type="radio" name="spicy" value="매운맛">
+                        매운맛
+                    </label>
+
+                </section>
+
+                <!-- 토핑 추가 -->
+                <section class="panel option">
+
+                    <h2>토핑 추가</h2>
+
+                    <label>
+                        <input type="checkbox" value="치즈" data-price="2000">
+                        모짜렐라 치즈
+                        <span>+2,000원</span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="계란" data-price="1000">
+                        삶은 계란
+                        <span>+1,000원</span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="어묵" data-price="1500">
+                        어묵 추가
+                        <span>+1,500원</span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="양배추" data-price="2000">
+                        양배추
+                        <span>+2,000원</span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="당근" data-price="1500">
+                        당근
+                        <span>+1,500원</span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="중국당면" data-price="3000">
+                        중국당면
+                        <span>+3,000원</span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="치즈떡" data-price="1000">
+                        치즈떡
+                        <span>+1,000원</span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="고구마떡" data-price="1000">
+                        고구마떡
+                        <span>+1,000원</span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="차돌박이" data-price="4000">
+                        차돌박이
+                        <span>+4,000원</span>
+                    </label>
+
+                </section>
+
+            </div>
+
+            <!-- 수량 선택 및 주문 금액 -->
+            <section class="panel quantity">
+
+                <div class="line">
+
+                    <h2>수량</h2>
+
+                    <div class="qty">
+
+                        <button id="minus" aria-label="수량 감소">−</button>
+
+                        <output id="qty">1</output>
+
+                        <button id="plus" aria-label="수량 증가">+</button>
+
+                    </div>
+
+                </div>
+
+                <div class="line total">
+
+                    <strong>총 주문 금액</strong>
+
+                    <strong id="total"></strong>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- 하단 주문 버튼 -->
+        <div class="bottom">
+
+            <button class="primary" id="order">
+                주문하기
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+
+        // Lucide 아이콘 생성
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        // 메뉴 리스트에서 전달받은 메뉴 정보
+        const q = new URLSearchParams(location.search);
+        const image = q.get('image') || 'ddeok_bokki_1.png';
+
+        document.querySelector('#productImage').src =
+        '../lists/img/' + image;
+
+
+        const name = q.get('name') || '오리지널 떡볶이';
+        const price = Number(q.get('price')) || 12000;
+
+        let qty = 1;
+
+        // 금액 표시 형식
+        const fmt = n => n.toLocaleString('ko-KR') + '원';
+
+        document.querySelector('#name').textContent = name;
+        document.querySelector('#base').textContent = fmt(price);
+
+        // 사이드 메뉴 및 음료 옵션 숨기기
+        if (['모둠 튀김', '쿨피스'].includes(name)) {
+            document.querySelector('#options').style.display = 'none';
+        }
+
+        // 선택된 토핑 확인
+        function toppings() {
+            return [
+                ...document.querySelectorAll(
+                    'input[type=checkbox]:checked'
+                )
+            ];
+        }
+
+        // 총 주문 금액 계산
+        function total() {
+
+            const toppingPrice = toppings().reduce(
+                (sum, item) => sum + Number(item.dataset.price),
+                0
+            );
+
+            return (price + toppingPrice) * qty;
+
+        }
+
+        // 화면 금액 및 수량 업데이트
+        function update() {
+
+            document.querySelector('#qty').textContent = qty;
+
+            document.querySelector('#order').textContent =
+                fmt(total()) + ' 주문하기';
+
+            document.querySelector('#total').textContent =
+                fmt(total());
+
+        }
+
+        // 수량 감소
+        document.querySelector('#minus').onclick = () => {
+
+            qty = Math.max(1, qty - 1);
+
+            update();
+
+        };
+
+        // 수량 증가
+        document.querySelector('#plus').onclick = () => {
+
+            qty++;
+
+            update();
+
+        };
+
+        // 옵션 선택 시 금액 변경
+        document.querySelectorAll('input').forEach(item => {
+
+            item.onchange = update;
+
+        });
+
+        // 장바구니 버튼
+        document.querySelector('#cart').onclick = () => {
+
+            document.querySelector('#order').click();
+
+        };
+
+        // 주문 정보 저장 및 결제 페이지 이동
+        document.querySelector('#order').onclick = () => {
+
+            const options =
+                document.querySelector('#options').style.display === 'none'
+                ? ''
+                : [
+                    document.querySelector(
+                        'input[name=spicy]:checked'
+                    ).value,
+                    ...toppings().map(item => item.value)
+                ].join(', ');
+
+            sessionStorage.setItem(
+                'ipdeokOrder',
+                JSON.stringify({
+                    name,
+                    qty,
+                    total: total(),
+                    options
+                })
+            );
+
+            location.href = '../payment/payment.html';
+
+        };
+
+        // 초기 화면 설정
+        update();
+
+    </script>
+
 </body>
 </html>

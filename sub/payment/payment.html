@@ -1,12 +1,596 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>결제페이지</title>
-    <link rel="stylesheet" href="css/payment.css">
+    <title>입덕볶이 | 주문하기</title>
+
+    <!-- Noto Sans KR 폰트 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- Lucide 아이콘 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/payment.css">
 </head>
+
 <body>
-    <h1>결제페이지</h1>
+
+    <div class="mobile-container">
+
+        <!-- 헤더 -->
+        <header class="header">
+
+            <a href="../detail/detail.html" id="backLink" aria-label="뒤로가기">
+                <i data-lucide="chevron-left"></i>
+            </a>
+
+            <h1>주문하기</h1>
+
+            <a href="../../index.html" aria-label="홈">
+                <i data-lucide="house"></i>
+            </a>
+
+        </header>
+
+        <!-- 매장 정보 -->
+        <div class="store-info">
+
+            <i data-lucide="store"></i>
+
+            <span>입덕볶이</span>
+
+            <span class="store-type">· 배달 주문</span>
+
+        </div>
+
+        <main>
+
+            <!-- 주문 내역 -->
+            <section class="panel order-panel">
+
+                <h2>
+                    주문 내역
+                    <span class="point-color">1</span>
+                </h2>
+
+                <div class="order-item">
+
+                    <div class="order-img">
+                        <i data-lucide="image"></i>
+                    </div>
+
+                    <div class="order-info">
+
+                        <h3 id="menuName">오리지널 떡볶이</h3>
+
+                        <strong id="menuPrice">12,000원</strong>
+
+                    </div>
+
+                    <span class="order-qty" id="orderQty">1개</span>
+
+                </div>
+
+                <!-- 상세 주문 정보 -->
+                <div class="order-detail">
+
+                    <div class="price-row">
+
+                        <span id="detailName">오리지널 떡볶이</span>
+
+                        <span id="detailPrice">12,000원</span>
+
+                    </div>
+
+                    <p class="option-text" id="optionText">
+                        보통맛
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- 배달 주소 -->
+            <section class="panel">
+
+                <div class="section-heading">
+
+                    <h2>배달 주소</h2>
+
+                    <button class="small-btn" id="addressBtn">
+                        변경
+                    </button>
+
+                </div>
+
+                <div class="address-row">
+
+                    <i data-lucide="map-pin"></i>
+
+                    <input type="text"
+                           id="address"
+                           placeholder="배달 주소를 입력해 주세요.">
+
+                </div>
+
+                <input type="text"
+                       class="input-box"
+                       id="detailAddress"
+                       placeholder="상세 주소를 입력해 주세요.">
+
+                <input type="tel"
+                       class="input-box"
+                       id="phone"
+                       placeholder="연락처를 입력해 주세요.">
+
+            </section>
+
+            <!-- 요청사항 -->
+            <section class="panel">
+
+                <h2>요청사항</h2>
+
+                <label class="input-label" for="storeRequest">
+                    매장 요청사항
+                </label>
+
+                <textarea id="storeRequest"
+                          placeholder="요청사항을 입력해 주세요."
+                          maxlength="100"></textarea>
+
+                <label class="input-label" for="deliveryRequest">
+                    배달 요청사항
+                </label>
+
+                <select id="deliveryRequest">
+
+                    <option>문 앞에 놓아주세요.</option>
+                    <option>직접 받을게요.</option>
+                    <option>도착하면 전화해 주세요.</option>
+                    <option>벨을 누르지 말아주세요.</option>
+
+                </select>
+
+            </section>
+
+            <!-- 쿠폰 -->
+            <section class="panel">
+
+                <div class="section-heading">
+
+                    <h2>쿠폰</h2>
+
+                    <button class="small-btn" id="couponBtn">
+                        선택
+                    </button>
+
+                </div>
+
+                <div class="coupon-row">
+
+                    <i data-lucide="ticket"></i>
+
+                    <span id="couponName">
+                        사용 가능한 쿠폰 1개
+                    </span>
+
+                    <strong id="couponValue" class="point-color">
+                        1,000원
+                    </strong>
+
+                </div>
+
+                <div class="coupon-select" id="couponSelect" hidden>
+
+                    <label>
+                        <input type="radio"
+                               name="coupon"
+                               value="0"
+                               checked>
+                        쿠폰 사용 안 함
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="coupon"
+                               value="1000">
+                        웰컴 1,000원 할인 쿠폰
+                    </label>
+
+                </div>
+
+            </section>
+
+            <!-- 결제 수단 -->
+            <section class="panel">
+
+                <h2>결제 수단</h2>
+
+                <div class="payment-methods">
+
+                    <label class="payment-option">
+
+                        <input type="radio"
+                               name="payment"
+                               value="신용/체크카드"
+                               checked>
+
+                        신용/체크카드
+
+                    </label>
+
+                    <label class="payment-option">
+
+                        <input type="radio"
+                               name="payment"
+                               value="네이버페이">
+
+                        네이버페이
+
+                        <span class="pay-logo naver">
+                            N pay
+                        </span>
+
+                    </label>
+
+                    <label class="payment-option">
+
+                        <input type="radio"
+                               name="payment"
+                               value="카카오페이">
+
+                        카카오페이
+
+                        <span class="pay-logo kakao">
+                            ● pay
+                        </span>
+
+                    </label>
+
+                    <label class="payment-option">
+
+                        <input type="radio"
+                               name="payment"
+                               value="토스페이">
+
+                        토스페이
+
+                        <span class="pay-logo toss">
+                            toss pay
+                        </span>
+
+                    </label>
+
+                </div>
+
+                <div class="save-payment">
+
+                    <label>
+
+                        <input type="checkbox" id="savePayment">
+
+                        선택한 결제수단 다음에도 사용
+
+                    </label>
+
+                </div>
+
+            </section>
+
+            <!-- 최종 결제 금액 -->
+            <section class="panel price-panel">
+
+                <div class="price-row">
+
+                    <span>주문 금액</span>
+
+                    <strong id="orderAmount">12,000원</strong>
+
+                </div>
+
+                <div class="price-row">
+
+                    <span>배달비</span>
+
+                    <strong id="deliveryFee">3,000원</strong>
+
+                </div>
+
+                <div class="price-row">
+
+                    <span>쿠폰 할인</span>
+
+                    <strong class="point-color" id="discount">
+                        0원
+                    </strong>
+
+                </div>
+
+                <div class="final-price">
+
+                    <strong>최종 결제 금액</strong>
+
+                    <strong id="finalPrice">15,000원</strong>
+
+                </div>
+
+            </section>
+
+            <!-- 이용동의 -->
+            <section class="panel agreement">
+
+                <h2>이용동의</h2>
+
+                <label>
+
+                    <input type="checkbox" id="agree">
+
+                    주문 내용 및 결제 진행에 동의합니다.
+
+                </label>
+
+                <p>
+                    주문 및 결제 과정에서 필요한 정보의 이용에 동의합니다.
+                    현재 화면은 시연용 프로토타입입니다.
+                </p>
+
+            </section>
+
+        </main>
+
+        <!-- 하단 고정 결제 버튼 -->
+        <div class="bottom">
+
+            <button class="primary" id="payBtn">
+                15,000원 결제하기
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        // 상세페이지에서 주문 정보 가져오기
+        let order;
+
+        try {
+
+            order = JSON.parse(
+                sessionStorage.getItem('ipdeokOrder')
+            );
+
+        } catch {
+
+            order = null;
+
+        }
+
+        // 직접 페이지에 접속했을 때 사용할 임시 정보
+        order = order || {
+            name: '오리지널 떡볶이',
+            qty: 1,
+            total: 12000,
+            options: '보통맛'
+        };
+
+        const fmt = n => n.toLocaleString('ko-KR') + '원';
+
+        const orderAmount = Number(order.total) || 12000;
+
+        const deliveryFee = 3000;
+
+        let discount = 0;
+
+        // 주문 내역 표시
+        document.querySelector('#menuName').textContent =
+            order.name;
+
+        document.querySelector('#menuPrice').textContent =
+            fmt(orderAmount);
+
+        document.querySelector('#orderQty').textContent =
+            order.qty + '개';
+
+        document.querySelector('#detailName').textContent =
+            order.name;
+
+        document.querySelector('#detailPrice').textContent =
+            fmt(orderAmount);
+
+        document.querySelector('#optionText').textContent =
+            order.options || '추가 옵션 없음';
+
+        document.querySelector('#orderAmount').textContent =
+            fmt(orderAmount);
+
+        document.querySelector('#deliveryFee').textContent =
+            fmt(deliveryFee);
+
+        // 뒤로가기
+        document.querySelector('#backLink').onclick = e => {
+
+            if (document.referrer.includes('/detail/')) {
+                e.preventDefault();
+                history.back();
+            }
+
+        };
+
+        // 배달 주소 변경
+        document.querySelector('#addressBtn').onclick = () => {
+
+            document.querySelector('#address').focus();
+
+        };
+
+        // 쿠폰 선택 영역 열기
+        document.querySelector('#couponBtn').onclick = () => {
+
+            const area = document.querySelector('#couponSelect');
+
+            area.hidden = !area.hidden;
+
+        };
+
+        // 최종 결제 금액 계산
+        function updatePrice() {
+
+            const final = orderAmount + deliveryFee - discount;
+
+            document.querySelector('#discount').textContent =
+                discount ? '-' + fmt(discount) : '0원';
+
+            document.querySelector('#finalPrice').textContent =
+                fmt(final);
+
+            document.querySelector('#payBtn').textContent =
+                fmt(final) + ' 결제하기';
+
+        }
+
+        // 쿠폰 선택 시 금액 변경
+        document.querySelectorAll('input[name="coupon"]').forEach(item => {
+
+            item.onchange = () => {
+
+                discount = Number(item.value);
+
+                document.querySelector('#couponName').textContent =
+                    discount ? '웰컴 1,000원 할인 쿠폰' : '사용 가능한 쿠폰 1개';
+
+                updatePrice();
+
+            };
+
+        });
+
+        // 이전 결제 수단 불러오기
+        const savedMethod = localStorage.getItem('ipdeokPaymentMethod');
+
+        if (savedMethod) {
+
+            document.querySelectorAll('input[name="payment"]').forEach(item => {
+
+                if (item.value === savedMethod) {
+                    item.checked = true;
+                }
+
+            });
+
+            document.querySelector('#savePayment').checked = true;
+
+        }
+
+        // 결제하기
+        document.querySelector('#payBtn').onclick = () => {
+
+            const address =
+                document.querySelector('#address').value.trim();
+
+            const detailAddress =
+                document.querySelector('#detailAddress').value.trim();
+
+            const phone =
+                document.querySelector('#phone').value.trim();
+
+            const payment =
+                document.querySelector('input[name="payment"]:checked').value;
+
+            if (!address) {
+
+                alert('배달 주소를 입력해 주세요.');
+
+                document.querySelector('#address').focus();
+
+                return;
+
+            }
+
+            if (!phone) {
+
+                alert('연락처를 입력해 주세요.');
+
+                document.querySelector('#phone').focus();
+
+                return;
+
+            }
+
+            if (!document.querySelector('#agree').checked) {
+
+                alert('이용동의 항목을 확인해 주세요.');
+
+                document.querySelector('#agree').focus();
+
+                return;
+
+            }
+
+            // 결제 수단 저장
+            if (document.querySelector('#savePayment').checked) {
+
+                localStorage.setItem(
+                    'ipdeokPaymentMethod',
+                    payment
+                );
+
+            } else {
+
+                localStorage.removeItem('ipdeokPaymentMethod');
+
+            }
+
+            // 결제 완료 페이지로 전달할 정보
+            sessionStorage.setItem(
+
+                'ipdeokOrder',
+
+                JSON.stringify({
+
+                    ...order,
+
+                    orderAmount,
+
+                    address: address + ' ' + detailAddress,
+
+                    phone,
+
+                    storeRequest:
+                        document.querySelector('#storeRequest').value,
+
+                    deliveryRequest:
+                        document.querySelector('#deliveryRequest').value,
+
+                    payment,
+
+                    deliveryFee,
+
+                    discount,
+
+                    finalPrice:
+                        orderAmount + deliveryFee - discount
+
+                })
+
+            );
+
+            // 결제 완료 페이지 이동
+            location.href = '../payment_finish/payment_finish.html';
+
+        };
+
+        updatePrice();
+
+    </script>
+
 </body>
 </html>

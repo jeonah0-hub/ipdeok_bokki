@@ -1,0 +1,547 @@
+
+@charset "utf-8";
+
+/* ========================================
+   기본 초기화 및 폰트 설정
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f5f5f5;
+    color: #111111;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ========================================
+   모바일 레이아웃
+======================================== */
+
+.mobile-container {
+    width: 100%;
+    max-width: 500px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: #eeeeee;
+    position: relative;
+    overflow-x: hidden;
+}
+
+main {
+    padding-bottom: 110px;
+}
+
+
+/* ========================================
+   헤더
+======================================== */
+
+.header {
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.header a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    min-height: 44px;
+}
+
+.header svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+
+/* ========================================
+   매장 정보
+======================================== */
+
+.store-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
+}
+
+.store-info svg {
+    width: 20px;
+    height: 20px;
+    color: #542619;
+}
+
+.store-type {
+    color: #999999;
+}
+
+
+/* ========================================
+   공통 콘텐츠 패널
+======================================== */
+
+.panel {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 28px 20px;
+    margin-bottom: 10px;
+}
+
+.panel h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin-bottom: 0;
+}
+
+.point-color {
+    color: #D93829;
+}
+
+.small-btn {
+    padding: 5px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* ========================================
+   주문 내역
+======================================== */
+
+.order-panel {
+    border-radius: 0 0 12px 12px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.order-img {
+    width: 90px;
+    height: 90px;
+    background-color: #d9d9d9;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-img svg {
+    width: 26px;
+    height: 26px;
+    color: #999999;
+}
+
+.order-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.order-info h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    overflow-wrap: anywhere;
+}
+
+.order-info strong {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.order-qty {
+    padding: 8px 16px;
+    border-radius: 30px;
+    background-color: #f5f5f5;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.order-detail {
+    padding: 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #777777;
+}
+
+.option-text {
+    margin-top: 8px;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   배달 주소 및 입력 영역
+======================================== */
+
+.address-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.address-row svg {
+    width: 22px;
+    height: 22px;
+    color: #542619;
+    flex-shrink: 0;
+}
+
+.address-row input {
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    padding: 0 12px;
+    font-size: 14px;
+}
+
+.input-box {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.input-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 18px 0 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 85px;
+    padding: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 14px;
+    resize: vertical;
+}
+
+select {
+    width: 100%;
+    height: 48px;
+    padding: 0 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-size: 14px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 1px solid #D93829;
+    border-color: #D93829;
+}
+
+
+/* ========================================
+   쿠폰
+======================================== */
+
+.coupon-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.coupon-row svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.coupon-row strong {
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.coupon-select {
+    margin-top: 18px;
+    padding: 14px;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+}
+
+.coupon-select label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   결제 수단
+======================================== */
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: #D93829;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.pay-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.naver {
+    background-color: #03C75A;
+    color: #ffffff;
+}
+
+.kakao {
+    background-color: #FEE500;
+    color: #111111;
+}
+
+.toss {
+    background-color: #3182F6;
+    color: #ffffff;
+}
+
+.save-payment {
+    border-top: 1px solid #eeeeee;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.save-payment label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555555;
+}
+
+
+/* ========================================
+   결제 금액
+======================================== */
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.price-row:last-child {
+    margin-bottom: 0;
+}
+
+.price-panel .price-row {
+    font-size: 15px;
+    color: #666666;
+}
+
+.price-panel .price-row strong {
+    color: #111111;
+}
+
+.price-panel .price-row strong.point-color {
+    color: #D93829;
+}
+
+.final-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1px solid #eeeeee;
+    padding-top: 20px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.final-price strong:last-child {
+    font-size: 24px;
+    color: #D93829;
+}
+
+
+/* ========================================
+   이용동의
+======================================== */
+
+.agreement label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.agreement p {
+    margin-top: 12px;
+    padding-left: 32px;
+    color: #999999;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   하단 고정 결제 버튼
+======================================== */
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 20px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    background-color: #ffffff;
+    border-top: 1px solid #eeeeee;
+    z-index: 100;
+}
+
+.primary {
+    width: 100%;
+    height: 56px;
+    background-color: #D93829;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.primary:hover {
+    background-color: #B92E22;
+}
+
+
+/* ========================================
+   작은 모바일 화면 대응
+======================================== */
+
+@media screen and (max-width: 380px) {
+
+    .order-img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .order-item {
+        gap: 12px;
+    }
+
+    .order-qty {
+        padding: 6px 10px;
+    }
+
+    .order-info h3 {
+        font-size: 14px;
+    }
+
+    .order-info strong {
+        font-size: 18px;
+    }
+
+    .final-price strong:last-child {
+        font-size: 22px;
+    }
+
+}
