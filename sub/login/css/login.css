@@ -1,0 +1,476 @@
+
+/* ==============================
+   기본 설정
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    background-color: #F3F3F3;
+    color: #222222;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* ==============================
+   전체 레이아웃
+============================== */
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0 auto;
+    background-color: #FFFDF9;
+}
+
+
+/* ==============================
+   헤더
+============================== */
+
+.header {
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #FFFDF9;
+    border-bottom: 1px solid #EEE9E3;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.header a {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.8px;
+}
+
+
+/* ==============================
+   로그인 콘텐츠
+============================== */
+
+.login-content {
+    padding: 20px 20px 40px;
+}
+
+
+/* ==============================
+   캐릭터 영역
+============================== */
+
+.character-section {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* 캐릭터가 표시되는 공간 */
+
+.character-wrap {
+    position: relative;
+
+    width: 100%;
+    height: 240px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 실제 캐릭터 이미지 크기 */
+
+.character {
+    display: block;
+
+    width: 340px;
+    height: 340px;
+    max-width: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    flex-shrink: 0;
+}
+
+/* 메인 타이틀 */
+
+.character-section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -1px;
+
+    color: #542619;
+    margin-bottom: 10px;
+}
+
+/* 캐릭터 안내 문구 */
+
+.character-section p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+
+    color: #8C7468;
+    min-height: 24px;
+}
+
+
+/* ==============================
+   입력창 영역
+============================== */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* 입력창 상단 타이틀 */
+
+.input-label {
+    display: block;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    height: 60px;
+    padding: 0 18px;
+
+    border: 1px solid #DED6CE;
+    border-radius: 14px;
+
+    background-color: #FFFFFF;
+    color: #222222;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    outline: none;
+    transition: border-color 0.2s,
+                box-shadow 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #D93829;
+    box-shadow: 0 0 0 3px rgba(217, 56, 41, 0.07);
+}
+
+.input-group input::placeholder {
+    color: #999999;
+}
+
+
+/* ==============================
+   비밀번호 보기
+============================== */
+
+.password-group input {
+    padding-right: 60px;
+}
+
+#togglePassword {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
+    color: #888888;
+}
+
+#togglePassword svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.8px;
+}
+
+
+/* ==============================
+   로그인 상태 유지
+============================== */
+
+.login-options {
+    display: flex;
+    align-items: center;
+    margin: 4px 0 20px;
+}
+
+.login-options label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: #666666;
+
+    cursor: pointer;
+}
+
+.login-options input {
+    width: 18px;
+    height: 18px;
+
+    accent-color: #D93829;
+    cursor: pointer;
+}
+
+
+/* ==============================
+   오류 메시지
+============================== */
+
+#errorMessage {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    color: #D93829;
+    margin-bottom: 16px;
+}
+
+/* 오류가 없으면 빈 공간 제거 */
+
+#errorMessage:empty {
+    margin-bottom: 0;
+}
+
+
+/* ==============================
+   로그인 버튼
+============================== */
+
+.login-btn {
+    width: 100%;
+    height: 60px;
+
+    background-color: #D93829;
+    color: #FFFFFF;
+
+    border: none;
+    border-radius: 16px;
+
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+
+    transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+    background-color: #BF2F22;
+}
+
+.login-btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+
+/* ==============================
+   회원가입 버튼
+============================== */
+
+.signup-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 60px;
+    margin-top: 12px;
+
+    border: none;
+    border-radius: 16px;
+
+    background-color: #FCECE3;
+    color: #542619;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    transition: background-color 0.2s;
+}
+
+.signup-btn:hover {
+    background-color: #F8DFD2;
+}
+
+
+/* ==============================
+   메인으로 돌아가기
+============================== */
+
+.home-link {
+    display: block;
+    text-align: center;
+
+    margin-top: 26px;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    color: #888888;
+}
+
+.home-link:hover {
+    color: #542619;
+}
+
+
+/* ==============================
+   캐릭터 기본 애니메이션
+============================== */
+
+.character.idle {
+    animation: floating 2.5s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+}
+
+
+/* ==============================
+   로그인 성공 애니메이션
+============================== */
+
+.character.success {
+    animation: jumping 0.45s ease-in-out 3;
+}
+
+@keyframes jumping {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+
+}
+
+
+/* ==============================
+   로그인 실패 애니메이션
+============================== */
+
+.character.fail {
+    animation: shaking 0.4s ease-in-out;
+}
+
+@keyframes shaking {
+
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25%, 75% {
+        transform: translateX(-8px);
+    }
+
+    50% {
+        transform: translateX(8px);
+    }
+
+}
+
+
+/* ==============================
+   작은 모바일 화면
+============================== */
+
+@media (max-width: 360px) {
+
+    .character-section h2 {
+        font-size: 23px;
+    }
+
+    .character-section p {
+        font-size: 14px;
+    }
+
+    .character-wrap {
+        height: 220px;
+    }
+
+}
+
+
+/* ==============================
+   움직임 최소화 설정
+============================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .character {
+        animation: none !important;
+    }
+
+}

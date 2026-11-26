@@ -579,3 +579,94 @@ button {
     }
 
 }
+/* =========================
+   사이드 메뉴
+========================= */
+
+.drawer-nav {
+    padding: 20px;
+}
+
+/* 리스트 기본 스타일 제거 */
+
+.drawer-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 일반 메뉴 */
+
+.drawer-nav .drawer-main-menu li {
+    border-bottom: none;
+}
+
+.drawer-nav .drawer-main-menu li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 20px 4px;
+
+    font-size: 18px;
+    font-weight: 600;
+    color: #222222;
+
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* 일반 메뉴 화살표 */
+
+.drawer-main-menu svg {
+    width: 18px;
+    height: 18px;
+    color: #888888;
+    stroke-width: 1.5px;
+}
+
+/* 회원 메뉴 구분선 */
+
+.drawer-nav .drawer-user-menu {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #DDDDDD;
+}
+
+/* 회원 관련 메뉴 */
+
+.drawer-nav .drawer-user-menu li {
+    border-bottom: none;
+}
+
+.drawer-nav .drawer-user-menu li a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+
+    padding: 14px 4px;
+
+    font-size: 15px;
+    font-weight: 400;
+    color: #542619;
+
+    text-decoration: none;
+}
+
+/* 회원 메뉴 아이콘 */
+
+.drawer-user-menu svg {
+    width: 20px;
+    height: 20px;
+    color: #542619;
+    stroke-width: 1.5px;
+}
+
+/* 메뉴 마우스 오버 */
+
+.drawer-nav li a:hover,
+.drawer-nav li a:hover svg {
+    color: #D93829;
+}

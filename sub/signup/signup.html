@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입덕볶이 | 회원가입</title>
+
+    <!-- Pretendard 폰트 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/signup.css">
+
+    <!-- Lucide 아이콘 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- 헤더 -->
+    <header class="header">
+
+        <a href="../login/login.html" aria-label="뒤로가기">
+            <i data-lucide="chevron-left"></i>
+        </a>
+
+        <h1>회원가입</h1>
+
+        <a href="../../index.html" aria-label="홈">
+            <i data-lucide="house"></i>
+        </a>
+
+    </header>
+
+    <main class="signup-content">
+
+        <!-- 상단 안내 영역 -->
+        <section class="intro-section">
+
+            <h2>입덕볶이에 오신 걸<br>환영해요!</h2>
+
+            <p>회원가입하고 맛있는 혜택을 만나보세요.</p>
+
+        </section>
+
+        <!-- 회원가입 입력 영역 -->
+        <form id="signupForm">
+
+            <!-- 이름 -->
+            <div class="form-group">
+
+                <label for="userName" class="input-label">
+                    이름 <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="userName"
+                    placeholder="이름을 입력해 주세요"
+                    autocomplete="name"
+                    required
+                >
+
+            </div>
+
+            <!-- 아이디 -->
+            <div class="form-group">
+
+                <label for="userId" class="input-label">
+                    아이디 <span class="required">*</span>
+                </label>
+
+                <div class="input-row">
+
+                    <input
+                        type="text"
+                        id="userId"
+                        placeholder="아이디를 입력해 주세요"
+                        autocomplete="username"
+                        required
+                    >
+
+                    <button type="button" id="checkIdBtn">
+                        중복 확인
+                    </button>
+
+                </div>
+
+                <p class="helper-text">
+                    영문, 숫자 조합 4~20자
+                </p>
+
+                <p id="idMessage" class="field-message" aria-live="polite"></p>
+
+            </div>
+
+            <!-- 비밀번호 -->
+            <div class="form-group">
+
+                <label for="password" class="input-label">
+                    비밀번호 <span class="required">*</span>
+                </label>
+
+                <div class="password-group">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="비밀번호를 입력해 주세요"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        data-target="password"
+                        aria-label="비밀번호 보기"
+                    >
+                        <i data-lucide="eye"></i>
+                    </button>
+
+                </div>
+
+                <p class="helper-text">
+                    영문, 숫자를 포함하여 8자 이상
+                </p>
+
+                <p id="passwordMessage" class="field-message" aria-live="polite"></p>
+
+            </div>
+
+            <!-- 비밀번호 확인 -->
+            <div class="form-group">
+
+                <label for="passwordConfirm" class="input-label">
+                    비밀번호 확인 <span class="required">*</span>
+                </label>
+
+                <div class="password-group">
+
+                    <input
+                        type="password"
+                        id="passwordConfirm"
+                        placeholder="비밀번호를 다시 입력해 주세요"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        data-target="passwordConfirm"
+                        aria-label="비밀번호 확인 보기"
+                    >
+                        <i data-lucide="eye"></i>
+                    </button>
+
+                </div>
+
+                <p id="confirmMessage" class="field-message" aria-live="polite"></p>
+
+            </div>
+
+            <!-- 휴대폰 번호 -->
+            <div class="form-group">
+
+                <label for="phone" class="input-label">
+                    휴대폰 번호 <span class="required">*</span>
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="010-0000-0000"
+                    maxlength="13"
+                    autocomplete="tel"
+                    inputmode="numeric"
+                    required
+                >
+
+            </div>
+
+            <!-- 약관 동의 -->
+            <section class="terms-section">
+
+                <h3>약관 동의</h3>
+
+                <div class="terms-all">
+
+                    <label>
+                        <input type="checkbox" id="agreeAll">
+                        <span>전체 동의하기</span>
+                    </label>
+
+                </div>
+
+                <div class="terms-list">
+
+                    <div class="terms-item">
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="agreeTerms"
+                                class="term-check"
+                            >
+                            <span>이용약관 동의 (필수)</span>
+                        </label>
+
+                        <button
+                            type="button"
+                            class="terms-detail"
+                            data-term="service"
+                            aria-label="이용약관 상세 보기"
+                        >
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="terms-item">
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="agreePrivacy"
+                                class="term-check"
+                            >
+                            <span>개인정보 수집 및 이용 동의 (필수)</span>
+                        </label>
+
+                        <button
+                            type="button"
+                            class="terms-detail"
+                            data-term="privacy"
+                            aria-label="개인정보 수집 약관 상세 보기"
+                        >
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="terms-item">
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="agreeMarketing"
+                                class="term-check"
+                            >
+                            <span>마케팅 정보 수신 동의 (선택)</span>
+                        </label>
+
+                        <button
+                            type="button"
+                            class="terms-detail"
+                            data-term="marketing"
+                            aria-label="마케팅 약관 상세 보기"
+                        >
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- 오류 메시지 -->
+            <p id="errorMessage" aria-live="polite"></p>
+
+            <!-- 회원가입 버튼 -->
+            <button type="submit" class="signup-btn">
+                회원가입
+            </button>
+
+        </form>
+
+        <!-- 로그인 페이지 이동 -->
+        <div class="login-link">
+
+            <span>이미 회원이신가요?</span>
+
+            <a href="../login/login.html">
+                로그인
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- 약관 및 회원가입 완료 모달 -->
+    <dialog id="modal" class="modal">
+
+        <div class="modal-box">
+
+            <div class="modal-icon">
+                <i id="modalIcon" data-lucide="info"></i>
+            </div>
+
+            <h3 id="modalTitle"></h3>
+
+            <p id="modalMessage"></p>
+
+            <button type="button" id="modalConfirm">
+                확인
+            </button>
+
+        </div>
+
+    </dialog>
+
+</div>
+
+<script src="./js/signup.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,552 @@
+
+/* ==============================
+   기본 설정
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #F3F3F3;
+    color: #222222;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* ==============================
+   전체 레이아웃
+============================== */
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0 auto;
+    background-color: #FFFDF9;
+}
+
+
+/* ==============================
+   헤더
+============================== */
+
+.header {
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #FFFDF9;
+    border-bottom: 1px solid #EEE9E3;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.header a {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.8px;
+}
+
+
+/* ==============================
+   회원가입 콘텐츠
+============================== */
+
+.signup-content {
+    padding: 36px 20px 40px;
+}
+
+
+/* ==============================
+   상단 안내 영역
+============================== */
+
+.intro-section {
+    margin-bottom: 36px;
+}
+
+.intro-section h2 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -1px;
+
+    color: #542619;
+    margin-bottom: 12px;
+}
+
+.intro-section p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #8C7468;
+}
+
+
+/* ==============================
+   입력창 공통 설정
+============================== */
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.input-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.required {
+    color: #D93829;
+    margin-left: 2px;
+}
+
+.form-group input {
+    width: 100%;
+    min-width: 0;
+    height: 60px;
+    padding: 0 18px;
+
+    border: 1px solid #DED6CE;
+    border-radius: 14px;
+
+    background-color: #FFFFFF;
+    color: #222222;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    outline: none;
+
+    transition: border-color 0.2s,
+                box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #D93829;
+    box-shadow: 0 0 0 3px rgba(217, 56, 41, 0.07);
+}
+
+.form-group input::placeholder {
+    color: #999999;
+}
+
+
+/* ==============================
+   아이디 중복 확인
+============================== */
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-row input {
+    flex: 1;
+}
+
+#checkIdBtn {
+    flex-shrink: 0;
+    height: 60px;
+    padding: 0 18px;
+
+    border: none;
+    border-radius: 14px;
+
+    background-color: #FCECE3;
+    color: #542619;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#checkIdBtn:hover {
+    background-color: #F8DFD2;
+}
+
+
+/* ==============================
+   입력 안내 및 검사 메시지
+============================== */
+
+.helper-text {
+    margin-top: 8px;
+
+    font-size: 13px;
+    line-height: 1.5;
+    color: #888888;
+}
+
+.field-message {
+    margin-top: 8px;
+
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.field-message:empty {
+    display: none;
+}
+
+.field-message.success {
+    color: #27864C;
+}
+
+.field-message.error {
+    color: #D93829;
+}
+
+
+/* ==============================
+   비밀번호 보기
+============================== */
+
+.password-group {
+    position: relative;
+}
+
+.password-group input {
+    padding-right: 60px;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
+    color: #888888;
+}
+
+.toggle-password svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.8px;
+}
+
+
+/* ==============================
+   약관 동의
+============================== */
+
+.terms-section {
+    margin-top: 36px;
+    margin-bottom: 28px;
+}
+
+.terms-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.terms-all {
+    padding: 18px 0;
+    border-bottom: 1px solid #DED6CE;
+}
+
+.terms-all label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.terms-all input {
+    width: 22px;
+    height: 22px;
+
+    accent-color: #D93829;
+    cursor: pointer;
+}
+
+.terms-list {
+    padding-top: 10px;
+}
+
+.terms-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+    min-height: 48px;
+}
+
+.terms-item label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666666;
+
+    cursor: pointer;
+}
+
+.terms-item input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+
+    accent-color: #D93829;
+    cursor: pointer;
+}
+
+.terms-detail {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 36px;
+
+    border: none;
+    background: transparent;
+    color: #999999;
+}
+
+.terms-detail svg {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* ==============================
+   오류 메시지
+============================== */
+
+#errorMessage {
+    margin-bottom: 14px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #D93829;
+}
+
+#errorMessage:empty {
+    display: none;
+}
+
+
+/* ==============================
+   회원가입 버튼
+============================== */
+
+.signup-btn {
+    width: 100%;
+    height: 60px;
+
+    border: none;
+    border-radius: 16px;
+
+    background-color: #D93829;
+    color: #FFFFFF;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    transition: background-color 0.2s;
+}
+
+.signup-btn:hover {
+    background-color: #BF2F22;
+}
+
+.signup-btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+
+/* ==============================
+   로그인 페이지 이동
+============================== */
+
+.login-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 26px;
+
+    font-size: 14px;
+    color: #888888;
+}
+
+.login-link a {
+    font-weight: 600;
+    color: #D93829;
+}
+
+
+/* ==============================
+   모달
+============================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+
+    width: calc(100% - 48px);
+    max-width: 380px;
+    max-height: 85dvh;
+
+    border: none;
+    border-radius: 24px;
+
+    background-color: #FFFDF9;
+    color: #542619;
+
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.modal-box {
+    padding: 32px 24px 24px;
+    text-align: center;
+}
+
+.modal-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+    background-color: #FCECE3;
+    color: #D93829;
+}
+
+.modal-icon svg {
+    width: 34px;
+    height: 34px;
+}
+
+.modal-box h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.modal-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #8C7468;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    margin-bottom: 26px;
+}
+
+#modalConfirm {
+    width: 100%;
+    height: 54px;
+
+    border: none;
+    border-radius: 14px;
+
+    background-color: #D93829;
+    color: #FFFFFF;
+
+    font-size: 17px;
+    font-weight: 600;
+}
+
+
+/* ==============================
+   작은 모바일 화면
+============================== */
+
+@media (max-width: 360px) {
+
+    .intro-section h2 {
+        font-size: 26px;
+    }
+
+    .intro-section p {
+        font-size: 14px;
+    }
+
+    .form-group input {
+        padding-left: 12px;
+        font-size: 14px;
+    }
+
+    #checkIdBtn {
+        padding: 0 12px;
+        font-size: 13px;
+    }
+
+    .terms-item label {
+        font-size: 13px;
+    }
+
+}

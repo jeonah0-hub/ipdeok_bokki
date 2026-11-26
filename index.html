@@ -49,34 +49,59 @@
             </div>
 
             <nav class="drawer-nav">
-                <ul>
-                    <li>
-                        <a href="./sub/lists/lists.html">
-                            메뉴 리스트
-                            <i data-lucide="chevron-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./sub/detail/detail.html">
-                            상세페이지
-                            <i data-lucide="chevron-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./sub/payment/payment.html">
-                            결제페이지
-                            <i data-lucide="chevron-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./sub/payment_finish/payment_finish.html">
-                            결제 완료 
-                            <i data-lucide="chevron-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+
+    <!-- 일반 메뉴 -->
+    <ul class="drawer-main-menu">
+        <li>
+            <a href="./sub/lists/lists.html">
+                <span>메뉴</span>
+                <i data-lucide="chevron-right"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="./sub/about/about.html">
+                <span>소개</span>
+                <i data-lucide="chevron-right"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="./sub/event/event.html">
+                <span>이벤트</span>
+                <i data-lucide="chevron-right"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="./sub/inquiry/inquiry.html">
+                <span>문의사항</span>
+                <i data-lucide="chevron-right"></i>
+            </a>
+        </li>
+    </ul>
+
+    <!-- 회원 관련 메뉴 -->
+    <ul class="drawer-user-menu">
+
+        <li>
+            <a href="./sub/login/login.html">
+                <i data-lucide="user-round"></i>
+                <span>로그인 / 회원가입</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="./sub/cart/cart.html">
+                <i data-lucide="shopping-bag"></i>
+                <span>장바구니</span>
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+</aside>
 
         <!-- Hero 섹션 -->
         <section class="hero" style="background-image: url('./img/main.img.jpg');">
@@ -87,8 +112,8 @@
         <section class="section_1">
             <button type="button"
                     class="order-btn btn-full btn-delivery"
-                    onclick="location.href='./sub/detail/detail.html'">
-                배달 주문하기
+                    id="deliveryOrderBtn">
+    배달 주문하기
             </button>
 
             <div class="btn-half-wrap">
@@ -208,6 +233,27 @@
         </section>
 
     </div>
+        <!-- 로그인 버튼 -->
+        <button type="button"
+                id="goLoginBtn"
+                class="modal-login-btn">
+
+            로그인하러 가기
+
+        </button>
+
+        <!-- 취소 버튼 -->
+        <button type="button"
+                id="cancelLoginBtn"
+                class="modal-cancel-btn">
+
+            다음에 할게요
+
+        </button>
+
+    </div>
+
+</dialog>
 
     <!-- Lucide 아이콘 및 사이드 메뉴 제어 -->
     <script>
@@ -242,6 +288,138 @@
             drawerOverlay.addEventListener('click', closeMenu);
         });
     </script>
+
+<!-- 로그인 상태 확인 및 주문 기능 -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // HTML 요소 가져오기
+
+        const deliveryOrderBtn =
+            document.querySelector("#deliveryOrderBtn");
+
+        const loginRequiredModal =
+            document.querySelector("#loginRequiredModal");
+
+        const closeLoginModal =
+            document.querySelector("#closeLoginModal");
+
+        const goLoginBtn =
+            document.querySelector("#goLoginBtn");
+
+        const cancelLoginBtn =
+            document.querySelector("#cancelLoginBtn");
+
+
+        // 로그인 상태 확인
+
+        function getCurrentUser() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem("ipdeokCurrentUser") ||
+                    sessionStorage.getItem("ipdeokCurrentUser") ||
+                    "null"
+                );
+
+            } catch (error) {
+
+                return null;
+
+            }
+
+        }
+
+
+        // 배달 주문하기 버튼 클릭
+
+        deliveryOrderBtn.addEventListener("click", function () {
+
+            const currentUser = getCurrentUser();
+
+            // 로그인 상태
+
+            if (currentUser && currentUser.id) {
+
+                window.location.href =
+                    "./sub/lists/lists.html";
+
+            } else {
+
+                // 비로그인 상태
+
+                loginRequiredModal.showModal();
+
+            }
+
+        });
+
+
+        // 팝업 닫기
+
+        function closeModal() {
+
+            loginRequiredModal.close();
+
+        }
+
+
+        // X 버튼
+
+        closeLoginModal.addEventListener(
+            "click",
+            closeModal
+        );
+
+
+        // 다음에 할게요 버튼
+
+        cancelLoginBtn.addEventListener(
+            "click",
+            closeModal
+        );
+
+
+        // 로그인하러 가기 버튼
+
+        goLoginBtn.addEventListener("click", function () {
+
+            window.location.href =
+                "./sub/login/login.html?redirect=order";
+
+        });
+
+
+        // 팝업 외부 클릭 시 닫기
+
+        loginRequiredModal.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === loginRequiredModal) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+        // Lucide 아이콘 생성
+
+        if (window.lucide) {
+
+            lucide.createIcons();
+
+        }
+
+    });
+
+</script>
 
 </body>
 </html>
